@@ -40,10 +40,10 @@ struct WTip: Tip {
     static var isCompactWidth: Bool = false
     
     @Parameter
-    static var willDisplayCampaignModal: Bool? = nil
+    static var willDisplayCampaignModal: Bool = false
     
     @Parameter
-    static var willDisplayYearInReviewModal: Bool? = nil
+    static var willDisplayYearInReviewModal: Bool = false
     
     var title: Text {
         Text(WMFLocalizedString(

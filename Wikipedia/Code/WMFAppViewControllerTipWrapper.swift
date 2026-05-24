@@ -33,7 +33,7 @@ import WMFComponents
     
         // It seems like tabBarItem does not have a recognizable frame on iPad for TipUIPopoverViewController to point to. We are going to add a fake view that is about the area of the center of the tab bar, and remove the popover arrows.
         
-        var targetViewIPad: UIView? = nil
+        var targetViewIPad: UIView?
         if UIDevice.current.userInterfaceIdiom == .pad {
             appViewController.view.addSubview(tabSearchTargetViewIPad)
             NSLayoutConstraint.activate([

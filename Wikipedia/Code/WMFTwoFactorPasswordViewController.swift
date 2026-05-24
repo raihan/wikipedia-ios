@@ -359,7 +359,7 @@ class WMFTwoFactorPasswordViewController: WMFScrollViewController, UITextFieldDe
 
                 WMFToastManager.sharedInstance.showToast(loggedInMessage, sticky: false, dismissPreviousToasts: true, tapCallBack: nil)
                 
-                var actionContext: [String: String]? = nil
+                var actionContext: [String: String]?
                 if let category {
                     actionContext = ["invoke_source": category.rawValue]
                 }
