@@ -21,7 +21,7 @@ import WMFNativeLocalizations
     static let savedImage = UIImage(named: "saved", in: Bundle.wmf, compatibleWith:nil)
 
     public var eventLoggingCategory: EventCategoryMEP = .feed
-    public var eventLoggingLabel: EventLabelMEP? = nil
+    public var eventLoggingLabel: EventLabelMEP?
 
     public var showImage: Bool = true
     public var showTitle: Bool = true

@@ -1128,8 +1128,12 @@ final class WMFAppViewController: UITabBarController, AppTabBarDelegate {
             selectedIndex = WMFAppTabType.places.rawValue
             currentTabNavigationController?.popToRootViewController(animated: animated)
             if let articleURL = activity.wmf_linkURL() {
-                placesViewController.updateViewModeToMap()
-                placesViewController.showArticleURL(articleURL)
+                if let coordinate = articleURL.placeCoordinate {
+                    placesViewController.searchPlaceWithCoordinate(coordinate: coordinate)
+                } else {
+                    placesViewController.updateViewModeToMap()
+                    placesViewController.showArticleURL(articleURL)
+                }
             }
 
         case .random:
@@ -2114,5 +2118,19 @@ extension WMFAppViewController {
         }
         let navVC = WMFComponentNavigationController(rootViewController: loginVC, modalPresentationStyle: .overFullScreen, customBarBackgroundColor: nil)
         present(navVC, animated: true, completion: nil)
+    }
+}
+
+private extension URL {
+    var placeCoordinate: CLLocationCoordinate2D? {
+        guard
+            let latString = (self as NSURL).wmf_value(forQueryKey: "latitude"),
+            let lonString = (self as NSURL).wmf_value(forQueryKey: "longitude"),
+            let latitude = Double(latString),
+            let longitude = Double(lonString),
+            CLLocationCoordinate2DIsValid(CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
+        else { return nil }
+        
+        return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
 }

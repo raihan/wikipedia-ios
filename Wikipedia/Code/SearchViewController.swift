@@ -365,8 +365,8 @@ class SearchViewController: ThemeableViewController, WMFNavigationBarConfiguring
         }
         let titleConfig = WMFNavigationBarTitleConfig(title: CommonStrings.searchTitle, customView: nil, alignment: alignment)
 
-        var profileButtonConfig: WMFNavigationBarProfileButtonConfig? = nil
-        var tabsButtonConfig: WMFNavigationBarTabsButtonConfig? = nil
+        var profileButtonConfig: WMFNavigationBarProfileButtonConfig?
+        var tabsButtonConfig: WMFNavigationBarTabsButtonConfig?
         
         if let dataStore,
            isRootTabView {

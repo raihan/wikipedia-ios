@@ -56,13 +56,13 @@ class ArticleViewController: ThemeableViewController, UIScrollViewDelegate, WMFN
 
     internal var willDisplayCampaignModal: Bool? {
         didSet {
-            WTip.willDisplayCampaignModal = willDisplayCampaignModal
+            WTip.willDisplayCampaignModal = willDisplayCampaignModal ?? false
         }
     }
     
     internal var willDisplayYearInReviewModal: Bool? {
         didSet {
-            WTip.willDisplayYearInReviewModal = willDisplayYearInReviewModal
+            WTip.willDisplayYearInReviewModal = willDisplayYearInReviewModal ?? false
         }
     }
 
@@ -138,7 +138,7 @@ class ArticleViewController: ThemeableViewController, UIScrollViewDelegate, WMFN
 
     private var leadImageHeight: CGFloat = 210
 
-    private var contentSizeObservation: NSKeyValueObservation? = nil
+    private var contentSizeObservation: NSKeyValueObservation?
 
     /// Current ETag of the web content response. Used to verify when content has changed on the server.
     var currentETag: String?
@@ -177,8 +177,8 @@ class ArticleViewController: ThemeableViewController, UIScrollViewDelegate, WMFN
 
     // Article Tabs-related properties
     var coordinator: ArticleTabCoordinating?
-    var previousArticleTab: WMFArticleTabsDataController.WMFArticle? = nil
-    var nextArticleTab: WMFArticleTabsDataController.WMFArticle? = nil
+    var previousArticleTab: WMFArticleTabsDataController.WMFArticle?
+    var nextArticleTab: WMFArticleTabsDataController.WMFArticle?
     let tabDataController = WMFArticleTabsDataController.shared
 
     private var isMainPage: Bool {
