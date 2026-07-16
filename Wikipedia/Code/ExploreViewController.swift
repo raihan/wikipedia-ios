@@ -992,7 +992,7 @@ class ExploreViewController: ColumnarCollectionViewController, ExploreCardViewCo
         }
     }
 
-    var addArticlesToReadingListVCDidDisappear: (() -> Void)? = nil
+    var addArticlesToReadingListVCDidDisappear: (() -> Void)?
 }
 
 // MARK: - Modal Presentation Logic
@@ -1807,7 +1807,7 @@ extension ExploreViewController: EditSaveViewControllerImageRecLoggingDelegate {
             return
         }
 
-        var timeSpent: Int? = nil
+        var timeSpent: Int?
         if let suggestionAcceptDate = currentRecommendation.suggestionAcceptDate {
             timeSpent = Int(Date().timeIntervalSince(suggestionAcceptDate))
         }

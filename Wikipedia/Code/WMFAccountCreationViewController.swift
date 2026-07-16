@@ -378,7 +378,7 @@ class WMFAccountCreationViewController: WMFScrollViewController, WMFCaptchaViewC
             switch loginResult {
             case .success:
                 
-                var actionContext: [String: String]? = nil
+                var actionContext: [String: String]?
                 if let category {
                     actionContext = ["invoke_source": category.rawValue]
                 }
@@ -461,7 +461,7 @@ class WMFAccountCreationViewController: WMFScrollViewController, WMFCaptchaViewC
     }
     
     @IBAction func textFieldDidBeginEditing(_ textField: UITextField) {
-        var elementId: String? = nil
+        var elementId: String?
         switch textField {
         case usernameField:
             usernameAlertLabel.alpha = 0

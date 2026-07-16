@@ -197,7 +197,7 @@ final class SettingsCoordinator: Coordinator, SettingsCoordinatorDelegate {
         let databaseHousekeeper = WMFDatabaseHousekeeper()
         let navigationStateController = NavigationStateController(dataStore: dataStore)
 
-        var cleanupError: Error? = nil
+        var cleanupError: Error?
 
         self.dataStore.performBackgroundCoreDataOperation { moc in
             do {

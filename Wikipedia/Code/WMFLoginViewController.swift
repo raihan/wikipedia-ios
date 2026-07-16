@@ -247,7 +247,7 @@ class WMFLoginViewController: WMFScrollViewController, UITextFieldDelegate, WMFC
                 self.loginSuccessCompletion?()
                 self.setViewControllerUserInteraction(enabled: true)
                 
-                var actionContext: [String: String]? = nil
+                var actionContext: [String: String]?
                 if let category {
                     actionContext = ["invoke_source": category.rawValue]
                 }

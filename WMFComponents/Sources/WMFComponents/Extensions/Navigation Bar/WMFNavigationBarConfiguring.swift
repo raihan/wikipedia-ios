@@ -186,7 +186,7 @@ public extension WMFNavigationBarConfiguring where Self: UIViewController {
         if let profileButtonConfig {
 
             var trailingBarButtonItems: [UIBarButtonItem] = []
-            var specificMenu: UIMenu? = nil
+            var specificMenu: UIMenu?
             var globalCollapsedActions: [UIAction] = []
             
             if let tabsButtonConfig {

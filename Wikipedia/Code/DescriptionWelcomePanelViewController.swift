@@ -23,7 +23,7 @@ class DescriptionWelcomePanelViewController: UIViewController, Themeable {
 
     var nextButtonAction: ((UIButton) -> Void)?
 
-    private var viewControllerForContainerView:UIViewController? = nil
+    private var viewControllerForContainerView:UIViewController?
     var pageType:DescriptionWelcomePageType = .intro
 
     override func viewDidLoad() {

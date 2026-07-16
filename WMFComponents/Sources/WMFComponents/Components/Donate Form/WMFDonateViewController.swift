@@ -32,7 +32,7 @@ public final class WMFDonateViewController: WMFCanvasViewController, WMFNavigati
     private func configureNavigationBar() {
         
         let titleConfig = WMFNavigationBarTitleConfig(title: viewModel.localizedStrings.title, customView: nil, alignment: .centerCompact)
-        var closeConfig: WMFLargeCloseButtonConfig? = nil
+        var closeConfig: WMFLargeCloseButtonConfig?
         
         if navigationController?.viewControllers.first === self {
             closeConfig = WMFLargeCloseButtonConfig(imageType: .plainX, target: self, action: #selector(closeButtonTapped(_:)), alignment: .leading)

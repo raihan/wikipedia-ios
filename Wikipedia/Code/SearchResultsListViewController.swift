@@ -4,7 +4,7 @@ import WMFComponents
 import WMFNativeLocalizations
 
 class SearchResultsListViewController: ArticleCollectionViewController {
-    var resultsInfo: WMFSearchResults? = nil // don't use resultsInfo.results, it mutates
+    var resultsInfo: WMFSearchResults? // don't use resultsInfo.results, it mutates
     var results: [MWKSearchResult] = [] {
         didSet {
             assert(Thread.isMainThread)
@@ -26,7 +26,7 @@ class SearchResultsListViewController: ArticleCollectionViewController {
         updateEmptyState()
     }
 
-    var searchSiteURL: URL? = nil
+    var searchSiteURL: URL?
 
     func isDisplaying(resultsFor searchTerm: String, from siteURL: URL) -> Bool {
         guard let searchResults = resultsInfo, let searchSiteURL = searchSiteURL else {

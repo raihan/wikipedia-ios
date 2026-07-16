@@ -127,7 +127,7 @@ public final class WMFImageRecommendationsViewModel: ObservableObject {
         
         let pageId: Int
         public let title: String
-        @Published var articleSummary: WMFArticleSummary? = nil
+        @Published var articleSummary: WMFArticleSummary?
         public let imageData: WMFImageRecommendationData
         public var caption: String?
         public var altText: String?
@@ -158,7 +158,7 @@ public final class WMFImageRecommendationsViewModel: ObservableObject {
     public private(set) var lastRecommendation: ImageRecommendation?
     @Published var loading: Bool = true
     @Published var debouncedLoading: Bool = true
-    @Published var loadingError: Error? = nil
+    @Published var loadingError: Error?
     private var subscriptions = Set<AnyCancellable>()
     private let needsSuppressPosting: Bool
 
@@ -315,7 +315,7 @@ public final class WMFImageRecommendationsViewModel: ObservableObject {
 
     private func populateImageAndArticleSummary(for imageRecommendation: ImageRecommendation, completion: @escaping (Error?) -> Void) {
         let group = DispatchGroup()
-        var populateError: Error? = nil
+        var populateError: Error?
 
         group.enter()
         self.populateCurrentArticleSummary(for: imageRecommendation, completion: { error in
