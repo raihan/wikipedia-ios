@@ -88,8 +88,8 @@ import CocoaLumberjackSwift
         let isTemp = dataStore.authenticationManager.authStateIsTemporary
         let sessionId = EventPlatformClient.shared.sessionID
 
-        var languageGroups: String? = nil
-        var languagePrimary: String? = nil
+        var languageGroups: String?
+        var languagePrimary: String?
         
         // If in widget, don't lean on MMKDataStore for preferred languages
         if Bundle.main.isAppExtension {

@@ -38,6 +38,7 @@ class PlacesViewController: ArticleLocationCollectionViewController, UISearchBar
     fileprivate let popoverFadeDuration = 0.25
     fileprivate let searchHistoryCountLimit = 15
     fileprivate var searchSuggestionController: PlaceSearchSuggestionController!
+    var pendingCoordinate: CLLocationCoordinate2D?
 
     fileprivate var siteURL: URL {
         return MWKDataStore.shared().primarySiteURL ?? NSURL.wmf_URLWithDefaultSiteAndCurrentLocale()!
@@ -253,6 +254,12 @@ class PlacesViewController: ArticleLocationCollectionViewController, UISearchBar
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        if let coordinate = pendingCoordinate {
+            pendingCoordinate = nil
+            searchPlaceWithCoordinate(coordinate: coordinate)
+        }
+
         ArticleTabsFunnel.shared.logIconImpression(interface: .places, project: nil)
     }
 
@@ -1265,6 +1272,21 @@ class PlacesViewController: ArticleLocationCollectionViewController, UISearchBar
         }
     }
 
+    /// Do the search based on the coordinates
+    /// We use this for the deep link with a location coordinate
+    @objc
+    func searchPlaceWithCoordinate(coordinate: CLLocationCoordinate2D) {
+        let region = [coordinate].wmf_boundingRegion(with: 10000)
+        
+        guard isViewLoaded && view.window != nil else {
+            pendingCoordinate = coordinate
+            return
+        }
+
+        mapRegion = region
+        performDefaultSearch(withRegion: mapRegion)
+    }
+    
     @objc func updateViewModeToMap() {
         guard viewIfLoaded != nil else {
             return
